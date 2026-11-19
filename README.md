@@ -20,3 +20,6 @@ https://bbs.pcbeta.com/viewthread-2082611-1-1.html?show\_loading=0\&webview\_pro
 https://github.com/bafcz/VoodooGPIO
 
 https://github.com/watchthelight-labs/WTLWireless
+
+显卡驱动（nullmoth nvidia-macos-driver）的网址：
+https://github.com/nullmoth/nvidia-macos-driver
