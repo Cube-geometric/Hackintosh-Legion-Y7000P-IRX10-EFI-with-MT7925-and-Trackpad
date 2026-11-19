@@ -1,0 +1,45 @@
+LICENSE
+
+1. VoodooGPIO
+This repository contains prebuilt binary (kext) compiled from VoodooGPIO.
+VoodooGPIO is licensed under GNU General Public License Version 3 (GPLv3).
+
+Original source repository: https://github.com/bafcz/VoodooGPIO
+GPLv3 license text: https://www.gnu.org/licenses/gpl-3.0.html
+
+The corresponding source code for this binary is available at the above original repository.
+No modifications have been made to VoodooGPIO source code for this build.
+
+2. VoodooI2C
+The C/C++ source code of VoodooI2C remains unchanged.
+Only the attached Info.plist configuration file has been modified, referencing the implementation idea from bafcz's VoodooGPIO.
+Added IOPCIMatch entry `0x7a7c8086&0xFFFCFFFF` to enable recognition of the target I2C controller.
+VoodooI2C is licensed under GPLv3.
+This modified Info.plist is included within this EFI package.
+
+3. MacKernelSDK
+This project is built using MacKernelSDK (https://github.com/acidanthera/MacKernelSDK).
+MacKernelSDK contains header files derived from Apple Darwin open source code, licensed under Apple Public Source License Version 2.0 (APSL 2.0).
+
+Original Apple open source: https://opensource.apple.com/
+APSL 2.0 license text: https://opensource.apple.com/apsl/
+
+No modifications were made to files within MacKernelSDK for this build.
+
+4. WTLWireless
+WiFi & Bluetooth driver from watchthelight-labs/WTLWireless.
+Original source repository: https://github.com/watchthelight-labs/WTLWireless
+
+Main code is licensed under ISC licence, except individual files specifying other licences:
+- Some Wi‑Fi core / menu components: Clear BSD‑3‑Clause (itlmt7925)
+- Some Bluetooth code: Clear BSD‑3‑Clause (MtkBtFw)
+- MediaTek firmware in firmware/: MediaTek redistributable licence
+See the project's NOTICE.md and licence files for full details.
+
+5. Other bundled kexts
+All remaining kexts included in this EFI are obtained unchanged from their official Release builds,
+without any modification to binaries, Info.plist or other internal files.
+Each of these kexts is governed by its own original license from the respective author.
+Please refer to their official project repositories for complete copyright and license information.
+No claim of ownership is made for these works.
+

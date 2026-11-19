@@ -9,8 +9,8 @@
 1. 内含通过ALC来驱动声卡的方式，在nullmoth的Nvidia驱动下，会和NMXAudio.kext发生冲突导致被忽略
 2. 不加CpuTsc时触发过Non-monotonic time panic，使用-cputsclock参数会导致睡眠无法正常进行且唤醒后系统疯狂追赶时间，故使用TCS\_sync\_margin=0参数代替，保证其能够进行睡眠和唤醒
 3. UTBMap是适配macOS 26的格式，故在macOS 15上应该无法正常使用，同时因为手头没有USB 3.0的Type-C接口设备，没有做它们的映射
-4. 为了使VoodooI2C可以驱动触控板，在IOPCIMatch下加入了0x7a7c8086\&0xFFFCFFFF以让VoodooI2C可以识别该I2C控制器，同时在VoodooGPIO中增补了12-14代的GPIO数据，故这两个驱动不是官方版本的
-5. WiFi和蓝牙虽然可以在macOS 26.7.2中原生地控制，但是不支持隔空投送和随航
+4. 选用bafcz大佬基于原版VoodooGPIO魔改后的源码直接编译,同时参考他的实现思路修改了VoodooI2C的plist。不过我也想在这里分享一下大佬的解决思路，以供其它不支持的机型进行参考：为了使VoodooI2C可以驱动触控板，在IOPCIMatch下加入了0x7a7c8086\&0xFFFCFFFF以让VoodooI2C可以识别该I2C控制器，同时在VoodooGPIO中增补了12-14代的GPIO数据
+5. WiFi和蓝牙选用了watchthelight-labs大佬编写的驱动，可以在macOS 26.7.2中直接原生地控制，体验非常不错，不过目前还不支持隔空投送和随航（
 6. CpuFriend是按照MacBookPro16,2的机型配置的，有其它伪装机型需求的需要自行修改，重新配置dataProvider
 
 部分问题解决时的参考网址：
@@ -23,3 +23,6 @@ https://github.com/watchthelight-labs/WTLWireless
 
 显卡驱动（nullmoth nvidia-macos-driver）的网址：
 https://github.com/nullmoth/nvidia-macos-driver
+
+注意：编译VoodooGPIO需要用到MacKernelSDK，否则会找不到IOKit和mach文件夹里面的头文件，在这里也附上SDK的仓库地址：
+https://github.com/acidanthera/MacKernelSDK
